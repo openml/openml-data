@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
     logging.info("Checking for matches against OpenML.")
 
-    # Put here the datasets to look for duplicates
+    # Put here the datasets to look for duplicates (this is just an example)
     source_datasets = openml.study.get_suite(271).data
     df = create_df_matches(source_datasets)
 
