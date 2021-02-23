@@ -48,6 +48,7 @@ def create_df_matches(datasets_check=None):
         new_data_metafeatures = [new_data.get(k) for k in ('name','NumberOfInstances','NumberOfFeatures','NumberOfMissingValues')]
         
         for did, oml_dataset in oml_datasets.items():
+#            Uncomment this if you do not want the dataset id as a duplicate of itself
 #            if did == new_data.get('did'):
 #                continue
             name_match, d_instances, d_features, d_missing = compare(new_data_metafeatures, oml_dataset)
@@ -90,10 +91,6 @@ if __name__ == '__main__':
     logging.getLogger().setLevel(logging.INFO)
     logging.basicConfig()
 
-    ## sys.argv[1] is to be the path to a folder with .arff files.
-    #logging.info("Checking .arff files for correctness. This can take a while."
-    #             "Bad files will be moved to {}bad/".format(sys.argv[1]))
-    #move_bad_files(sys.argv[1])
     logging.info("Checking for matches against OpenML.")
 
     # Put here the datasets to look for duplicates
@@ -104,6 +101,7 @@ if __name__ == '__main__':
 
     logging.info("Aggregating results...")
 
+#    Uncomment this to show all the duplicates found regardless of the criteria
 #    print("The following duplicates were found in total:")
 #    all_matches = dict()
 #    for name,group in df.groupby(['name']):
